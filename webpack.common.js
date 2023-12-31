@@ -38,7 +38,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Random sequence picker',
+            title: 'Random sentence picker',
             //favicon: path.resolve(__dirname, './src/images/favicon.ico')
         }),
         new CleanWebpackPlugin(),
