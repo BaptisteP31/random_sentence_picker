@@ -16,12 +16,19 @@
     <div class="container">
         <p>Add your sentences here, you can also directly add a list of sentences with a text file.</p>
         <form>
-            <label for="sentence">Sentence(s)</label>
-            <br>
             <input type="text" name="sentence" id="sentence">
-            <input type="submit" value="Submit" onclick="javascript:void(0); return false;">
+            <input type="submit" id="submit-button" value="Submit" onclick="javascript:void(0); return false;">
         </form>
+
+        <table id="sentence-table">
+            <tr>
+                <th>Sentence</th>
+            </tr>
+        </table>
+
     </div>
+
+    
     
 </body>
 </html>
