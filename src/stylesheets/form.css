@@ -1,0 +1,21 @@
+input {
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 3px 20px;
+    border: none;
+    cursor: pointer;
+
+    width: auto;
+}
+
+@media screen and (max-width: 600px) {
+    input[type=text], input[type=password] {
+        width: 100%;
+    }
+    
+}
