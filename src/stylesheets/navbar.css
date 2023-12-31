@@ -1,0 +1,31 @@
+navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    --height: 50px;
+
+    /* minimum height of 50px */
+    height: var(--height);
+
+    /* text is centered vertically */
+    line-height: var(--height);
+
+    background: #333;
+}
+
+navbar ul li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+navbar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+navbar ul li a:hover {
+    background-color: #555;
+    color: white;
+}
