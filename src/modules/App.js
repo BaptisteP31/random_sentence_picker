@@ -20,7 +20,18 @@ export default class App {
         this.sentenceList.push(sentence);
         let sentenceRow = document.createElement('tr');
         let sentenceData = document.createElement('td');
-        sentenceData.innerText = sentence;
+        let sentenceText = document.createElement('p');
+        let deleteButton = document.createElement('button');
+
+        deleteButton.addEventListener('click', () => {
+            sentenceRow.remove();
+            this.sentenceList.splice(this.sentenceList.indexOf(sentence), 1);
+        });
+
+        sentenceText.innerText = sentence;
+        deleteButton.innerText = 'Delete';
+        sentenceData.appendChild(sentenceText);
+        sentenceData.appendChild(deleteButton);
         sentenceRow.appendChild(sentenceData);
         this.sentenceTable.appendChild(sentenceRow);
     } 
