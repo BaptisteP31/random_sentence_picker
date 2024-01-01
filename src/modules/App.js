@@ -4,15 +4,22 @@ export default class App {
         this.sentenceList = [];
         this.sentenceTable = document.querySelector('#sentence-table');
         this.submitButton = document.querySelector('#submit-button');
+        this.pickButton = document.querySelector('#pick-button');
 
         this.init();
     }
 
     init() {
         console.log(`${this.name} initialized`);
+        
         this.submitButton.addEventListener('click', () => {
             let sentence = document.getElementById('sentence').value;
             this.addSentence(sentence);
+        });
+
+        this.pickButton.addEventListener('click', () => {
+            let randomSentence = this.sentenceList[Math.floor(Math.random() * this.sentenceList.length)];
+            document.getElementById('picked-sentence').innerText = randomSentence;
         });
     }
 
