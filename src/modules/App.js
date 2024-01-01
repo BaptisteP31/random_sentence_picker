@@ -6,6 +6,7 @@ export default class App {
         this.submitButton = document.querySelector('#submit-button');
         this.pickButton = document.querySelector('#pick-button');
         this.downloadButton = document.querySelector('#download-button');
+        this.uploadButton = document.querySelector('#upload-button');
 
         this.init();
     }
@@ -26,6 +27,26 @@ export default class App {
         this.downloadButton.addEventListener('click', () => {
             this.download();
         });
+
+        this.uploadButton.addEventListener('click', () => {
+            // process the file in the input
+            let file = document.getElementById('file-input').files[0];
+
+            if(!file)
+                return;
+            
+            let reader = new FileReader();
+            reader.readAsText(file);
+
+            reader.onload = () => {
+                let sentences = reader.result.split('\n');
+                sentences.forEach(sentence => {
+                    if(this.isLineEmpty(sentence))
+                        return;
+                    this.addSentence(sentence);
+                });
+            };
+        }); 
     }
 
     addSentence(sentence) {
@@ -61,6 +82,10 @@ export default class App {
         document.body.appendChild(element);
         element.click();
         document.body.removeChild(element);
+    }
+
+    isLineEmpty(line) {
+        return line.trim().length === 0;
     }
 
 
