@@ -7,6 +7,7 @@ export default class App {
         this.pickButton = document.querySelector('#pick-button');
         this.downloadButton = document.querySelector('#download-button');
         this.uploadButton = document.querySelector('#upload-button');
+        this.clearButton = document.querySelector('#clear-button');
 
         this.init();
     }
@@ -26,6 +27,11 @@ export default class App {
 
         this.downloadButton.addEventListener('click', () => {
             this.download();
+        });
+
+        this.clearButton.addEventListener('click', () => {
+            this.sentenceList = [];
+            this.sentenceTable.innerHTML = '';
         });
 
         this.uploadButton.addEventListener('click', () => {
