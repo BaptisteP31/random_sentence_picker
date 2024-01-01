@@ -5,6 +5,7 @@ export default class App {
         this.sentenceTable = document.querySelector('#sentence-table');
         this.submitButton = document.querySelector('#submit-button');
         this.pickButton = document.querySelector('#pick-button');
+        this.downloadButton = document.querySelector('#download-button');
 
         this.init();
     }
@@ -20,6 +21,10 @@ export default class App {
         this.pickButton.addEventListener('click', () => {
             let randomSentence = this.sentenceList[Math.floor(Math.random() * this.sentenceList.length)];
             document.getElementById('picked-sentence').innerText = randomSentence;
+        });
+
+        this.downloadButton.addEventListener('click', () => {
+            this.download();
         });
     }
 
@@ -42,6 +47,21 @@ export default class App {
         sentenceRow.appendChild(sentenceData);
         this.sentenceTable.appendChild(sentenceRow);
     } 
+
+    download() {
+        let text = '';
+        this.sentenceList.forEach(sentence => {
+            text += sentence + '\n';
+        });
+
+        let element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', 'sentences.txt');
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
 
 
 }
