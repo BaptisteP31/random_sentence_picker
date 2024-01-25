@@ -21,6 +21,8 @@ export default class App {
         });
 
         this.pickButton.addEventListener('click', () => {
+            if (this.sentenceList.length === 0)
+                return;
             let randomSentence = this.sentenceList[Math.floor(Math.random() * this.sentenceList.length)];
             document.getElementById('picked-sentence').innerText = randomSentence;
         });
