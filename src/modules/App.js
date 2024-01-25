@@ -56,6 +56,9 @@ export default class App {
     }
 
     addSentence(sentence) {
+        if(this.isLineEmpty(sentence))
+            return;
+
         this.sentenceList.push(sentence);
         let sentenceRow = document.createElement('tr');
         let sentenceData = document.createElement('td');
