@@ -23,7 +23,15 @@ export default class App {
         this.pickButton.addEventListener('click', () => {
             if (this.sentenceList.length === 0)
                 return;
-            let randomSentence = this.sentenceList[Math.floor(Math.random() * this.sentenceList.length)];
+
+            const index = Math.floor(Math.random() * this.sentenceList.length);
+            let randomSentence = this.sentenceList[index];
+
+            if(!document.getElementById('replacement').checked) {
+                this.sentenceList.splice(index, 1);
+                this.drawTable();
+            }
+
             document.getElementById('picked-sentence').innerText = randomSentence;
         });
 
@@ -80,6 +88,28 @@ export default class App {
         document.getElementById('sentence').value = '';
         this.sentenceTable.appendChild(sentenceRow);
     } 
+
+    drawTable() {
+        this.sentenceTable.innerHTML = '';
+        this.sentenceList.forEach(sentence => {
+            let sentenceRow = document.createElement('tr');
+            let sentenceData = document.createElement('td');
+            let sentenceText = document.createElement('p');
+            let deleteButton = document.createElement('button');
+
+            deleteButton.addEventListener('click', () => {
+                sentenceRow.remove();
+                this.sentenceList.splice(this.sentenceList.indexOf(sentence), 1);
+            });
+
+            sentenceText.innerText = sentence;
+            deleteButton.innerText = 'Delete';
+            sentenceData.appendChild(sentenceText);
+            sentenceData.appendChild(deleteButton);
+            sentenceRow.appendChild(sentenceData);
+            this.sentenceTable.appendChild(sentenceRow);
+        });
+    }
 
     download() {
         let text = '';

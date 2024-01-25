@@ -24,6 +24,12 @@ input[type=file] {
     width: auto;
 }
 
+input[type=radio] {
+    margin: 8px 8px;
+    box-sizing: border-box;
+    width: auto;
+}
+
 @media screen and (max-width: 600px) {
     input[type=text], input[type=password] {
         width: 100%;
