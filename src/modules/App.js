@@ -72,6 +72,7 @@ export default class App {
         sentenceData.appendChild(sentenceText);
         sentenceData.appendChild(deleteButton);
         sentenceRow.appendChild(sentenceData);
+        document.getElementById('sentence').value = '';
         this.sentenceTable.appendChild(sentenceRow);
     } 
 
